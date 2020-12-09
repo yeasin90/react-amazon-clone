@@ -2,6 +2,10 @@ export const initialState = {
   basket: [],
 }
 
+// Selector
+export const getBasketTotal = (basket) =>
+  basket?.reduce((amount, item) => item.price + amount, 0) // reduce is foreach loop
+
 // Reducer is resposible to put/fetch/modify data from Component to data context
 const reducer = (state, action) => {
   switch (action.type) {
