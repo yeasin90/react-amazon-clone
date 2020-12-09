@@ -5,6 +5,7 @@ import { useStateValue } from './StateProvider'
 import { getBasketTotal } from './reducer'
 
 function Subtotal() {
+  // Read from data layer
   const [{ basket }, dispatch] = useStateValue()
 
   return (
