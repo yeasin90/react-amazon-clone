@@ -16,6 +16,25 @@ const reducer = (state, action) => {
         // Add current ...state.basket, plus new item
         basket: [...state.basket, action.item],
       }
+    case 'REMOVE_FROM_BASKET':
+      const index = state.basket.findIndex(
+        (basketItem) => basketItem.id === action.id
+      )
+      // Assing current basket state to temporary variable
+      let newBasket = [...state.basket]
+
+      if (index >= 0) {
+        newBasket.splice(index, 1)
+      } else {
+        // Use `` to append variables inside string
+        console.warn(
+          `Cant remove product (id: ${action.id} as it's not in basket!`
+        )
+      }
+      return {
+        ...state,
+        basket: newBasket,
+      }
     default:
       return state
   }
